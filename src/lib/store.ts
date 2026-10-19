@@ -1,5 +1,5 @@
-export const storeConfig = {
-  currency: "SAR",
+﻿export const storeConfig = {
+  currency: "INR",
   locale: "en",
   phone: "90594 97025",
   phoneLink: "tel:+919059497025",
@@ -20,3 +20,4 @@ export function formatPrice(amount: number | null) {
     maximumFractionDigits: 0,
   }).format(amount);
 }
+

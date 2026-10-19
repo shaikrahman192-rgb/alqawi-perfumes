@@ -32,9 +32,9 @@ const sizes: ProductSize[] = [
 
 const pricePlaceholders: Product["prices"] = {
   10: 199,
-  30: 599,
-  50: 899,
-  100: 1899,
+  30: 499,
+  50: 799,
+  100: 1599,
 };
 
 const createProduct = (
@@ -259,4 +259,5 @@ export function getProductsByFamily(family: string) {
 }
 
 export default products;
+
 

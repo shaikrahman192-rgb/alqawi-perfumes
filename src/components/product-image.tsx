@@ -1,8 +1,8 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { masterBottleImage, Product } from "@/lib/products";
 
 const atmospheres: Record<string, string> = {
-  oud: "from-[#401910] via-[#170e0d] to-[#080909]",
+  oud: "from-[#624024] via-[#211610] to-[#080909]",
   desert: "from-[#8a5729] via-[#3b2418] to-[#10100e]",
   nomadicOud: "from-[#49364c] via-[#251c2d] to-[#101015]",
   citrus: "from-[#70824b] via-[#26382b] to-[#111614]",
@@ -28,24 +28,41 @@ export function ProductImage({
 }) {
   return (
     <div
-      className={`relative isolate h-full overflow-hidden bg-gradient-to-br ${
-        atmospheres[product.atmosphere] ?? "from-[#665133] via-[#27221b] to-[#10100e]"
+      className={`group relative isolate h-full min-h-[280px] w-full overflow-hidden bg-gradient-to-br ${
+        atmospheres[product.atmosphere] ??
+        "from-[#665133] via-[#27221b] to-[#10100e]"
       }`}
     >
-      <div className="absolute -right-20 -top-16 h-64 w-64 rounded-full bg-[#f3d69b]/15 blur-3xl" />
-      <div className="absolute -bottom-24 -left-12 h-72 w-72 rounded-full bg-black/30 blur-3xl" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_44%,rgba(248,219,164,0.18),transparent_51%)]" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[42%] z-0 h-[65%] w-[75%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e9bf68]/20 blur-[65px]"
+      />
+
       <Image
         src={masterBottleImage}
-        alt={`${product.name} in the Al Qawi Perfumes bottle`}
+        alt={`${product.name} perfume bottle`}
         fill
         priority={priority}
-        className="z-10 object-contain p-1 mix-blend-screen drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)]"
+        unoptimized
         sizes="(max-width: 768px) 100vw, 50vw"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          objectPosition: "center center",
+          zIndex: 10,
+        }}
       />
-      <div className="absolute inset-x-0 bottom-0 z-20 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
-      <div className="absolute inset-x-0 bottom-4 z-30 text-center">
-        <span className="text-[10px] uppercase tracking-[0.42em] text-[#f7e7c5]">
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-1/4 bg-gradient-to-t from-black/35 to-transparent"
+      />
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-4 z-30 px-3 text-center">
+        <span className="text-[10px] uppercase tracking-[0.25em] text-[#fff0cc] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
           {product.name}
         </span>
       </div>
